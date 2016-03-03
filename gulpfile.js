@@ -13,7 +13,7 @@ var plumber = require('gulp-plumber');
 var watch = require('gulp-watch');
 
 function compile(watch) {
-	var bundler = watchify(browserify('./src/index.js', { debug: true }).transform(babel));
+	var bundler = watchify(browserify('./src/index.js', { debug: true }).transform(babel, {presets: ["es2015"]}));
 
 	function rebundle() {
 		bundler.bundle()
