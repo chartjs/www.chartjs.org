@@ -15,6 +15,8 @@ export default function(ctx){
 
 	var data = [];
 
+	var timeout;
+
 	for (var i = count - 1; i >= 0; i--) {
 		data.push(randomize());
 	}
@@ -36,6 +38,23 @@ export default function(ctx){
 				xAxes:[{
 					display: false
 				}]
+			},
+			animation:{
+				onComplete: () => {
+					if (timeout) {
+						clearTimeout(timeout);
+					}
+
+					timeout = setTimeout(()=>{
+						const randomCount = randomBar();
+
+						for (let i = randomCount - 1; i >= 0; i--) {
+							data[randomBar()] = randomize();
+						}
+
+						barChart.update();
+					}, 2000);
+				}
 			}
 		},
 		data: {
@@ -50,13 +69,4 @@ export default function(ctx){
 
 	const barChart = new Chart.Bar(ctx, barChartConfig);
 
-	setInterval(function(){
-		const randomCount = randomBar();
-
-		for (let i = randomCount - 1; i >= 0; i--) {
-			data[randomBar()] = randomize();
-		}
-
-		barChart.update();
-	}, 2000);
 }
