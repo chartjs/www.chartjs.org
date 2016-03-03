@@ -66,9 +66,6 @@ export default function(ctx){
 					gridLines: {
 						color: 'rgba(231,233,237,0.5)',
 						zeroLineColor: 'rgba(231,233,237,1)'
-					},
-					ticks: {
-						display: false
 					}
 				}],
 				yAxes: [{
