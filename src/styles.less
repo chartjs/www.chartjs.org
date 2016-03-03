@@ -1,3 +1,173 @@
+@import (less) "../node_modules/normalize.css/normalize.css";
+
+
+// Colours
+@black: #333538;
+@white: #FFFFFF;
+@grey: #E7E9ED;
+@green: #4BC0C0;
+@red: #FF6384;
+@blue: #36A2EB;
+
+// Fonts
 @title: "proxima-nova-soft",sans-serif;
 @body: "proxima-nova",sans-serif;
 
+* {
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 100%;
+	-webkit-font-smoothing: antialiased;
+}
+
+body {
+	position: relative;
+	padding-top: 120px;
+	color: @black;
+	font-family: @body;
+}
+
+.background-chart {
+	top: 0;
+	left: 0;
+	position: absolute;
+	width: 100%;
+	height: 400px;
+	background-color: @grey;
+}
+
+.content-overlay {
+	position: relative;
+	max-width: 800px;
+	margin: 0 auto;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+	padding: 30px 60px;
+	background-color: @white;
+}
+
+.hero-container {
+	text-align: center;
+}
+
+// Type styles
+.hero-title {
+	font-family: @title;
+	font-size: 3.75rem;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+.hero-subtitle {
+	font-family: @title;
+	font-weight: 400;
+	font-size: 1.25rem;
+}
+
+.subtitle {
+	font-family: @title;
+	font-weight: 600;
+	font-size: 1.25rem;
+	&__small {
+		font-size: 1rem;
+	}
+}
+.description {
+	font-weight: 300;
+	line-height: 1.5;
+	&__small {
+		font-size: 0.875rem;
+	}
+}
+
+
+// Link, Button & Pill styles
+a {
+	color: @blue;
+	text-decoration: none;
+	border-bottom: 1px solid @blue;
+}
+.button {
+	border: 0;
+	text-align: center;
+	display: inline-block;
+	padding: 16px;
+	margin: 0 8px;
+	color: @white;
+	background-color: @grey;
+	border-radius: 8px;
+	font-family: @title;
+	font-weight: 600;
+	text-decoration: none;
+	&__red {
+		background-color: @red;
+	}
+	&__blue {
+		background-color: @blue;
+	}
+}
+.pill {
+	background-color: @green;
+	padding: 8px;
+	font-size: 0.875rem;
+	vertical-align: middle;
+	display: inline-block;
+	color: @white;
+	border-radius: 8px;
+	&__new {
+		margin-right: 8px;
+	}
+}
+
+
+hr {
+	display: block;
+	max-width: 50%;
+	margin: 40px auto;
+	background-color: transparent;
+	border: 0;
+	border-bottom: 1px solid @grey;
+}
+// Hero banner styles
+.hero-button-wrapper {
+	padding: 20px 0;
+	.button {
+		width: 180px;
+	}
+}
+
+// Features list styles
+.feature-text, .feature-chart {
+	float: left;
+	width: 50%;
+}
+
+.feature-small-container {
+	margin: 0 -10px;
+	.clearfix;
+}
+.feature-small {
+	float: left;
+	padding: 10px;
+	width: 25%;
+	text-align: center;
+}
+
+.feature {
+	.clearfix;
+}
+
+.clearfix() {
+	&:before,
+	&:after {
+		content: " ";
+		display: table;
+	}
+	&:after {
+		clear: both;
+	}
+}
+
+.link-container, footer {
+	text-align: center;
+}
