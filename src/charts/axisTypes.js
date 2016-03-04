@@ -68,6 +68,15 @@ export default function(ctx){
 					gridLines: {
 						color: 'rgba(231,233,237,0.5)',
 						zeroLineColor: 'rgba(231,233,237,1)'
+					},
+					ticks: {
+						userCallback: function(tick) {
+							var remain = tick / (Math.pow(10, Math.floor(Chart.helpers.log10(tick))));
+							if (remain === 1 || remain === 2 || remain === 5) {
+								return tick.toString();
+							}
+							return '';
+						},
 					}
 				}],
 				yAxes: [{
