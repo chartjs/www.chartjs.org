@@ -1,5 +1,5 @@
 import Chart from 'chart.js';
-
+import * as colours from '../colours.js';
 
 const randomScalingFactor = function() {
 	return Math.round(Math.random() * 100);
@@ -11,28 +11,31 @@ export default function(ctx){
 		labels: ["A", "B", "C", "D", "E", "F", "G"],
 		datasets: [{
 			type: 'bar',
-			backgroundColor: "rgba(160,162,184,0.8)",
+			backgroundColor: colours.mauve,
 			data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
 			borderColor: 'white',
 			borderWidth: 2
 		},{
 			type: 'bar',
-			backgroundColor: "rgba(54,162,235,0.8)",
+			backgroundColor: colours.blue,
 			data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
 			borderColor: 'white',
 			borderWidth: 2
 		},{
 			type: 'line',
-			backgroundColor: "rgba(255,205,86,0.5)",
+			backgroundColor: Chart.helpers.color(colours.yellow).alpha(0.5).rgbaString(),
 			data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
-			borderColor: "rgba(255,205,86,1)",
+			borderColor: Chart.helpers.color(colours.yellow).alpha(1).rgbaString(),
 			borderWidth: 1,
-			pointBorderColor: "rgba(255,205,86,1)",
+			pointBorderColor: Chart.helpers.color(colours.yellow).alpha(1).rgbaString(),
 			pointBorderWidth: 2,
-			pointBackgroundColor: "rgba(255,255,255,1)"
+			pointBackgroundColor: "white"
 		} ]
 	};
 
+
+	const gridGrey = Chart.helpers.color(colours.grey).alpha(0.5).rgbaString();
+	const axisGrey = Chart.helpers.color(colours.grey).alpha(1).rgbaString();
 	new Chart.Bar(ctx, {
 		data: barChartData,
 		options: {
@@ -48,14 +51,14 @@ export default function(ctx){
 				xAxes: [{
 					barPercentage: 0.75,
 					gridLines: {
-						color: 'rgba(231,233,237,0.5)',
-						zeroLineColor: 'rgba(231,233,237,1)'
+						color: gridGrey,
+						zeroLineColor: axisGrey
 					}
 				}],
 				yAxes:[{
 					gridLines: {
-						color: 'rgba(231,233,237,0.5)',
-						zeroLineColor: 'rgba(231,233,237,1)'
+						color: gridGrey,
+						zeroLineColor: axisGrey
 					},
 					ticks: {
 						display: false

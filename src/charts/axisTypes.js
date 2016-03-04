@@ -1,13 +1,15 @@
 import Chart from 'chart.js';
 
+import * as colours from '../colours.js';
 
 export default function(ctx){
+	let red = Chart.helpers.color(colours.red);
 
 	var scatterChartData = {
 		datasets: [{
-			borderColor: 'rgba(252,98,132,1)',
-			backgroundColor: 'rgba(252,98,132, 0.5)',
-			pointBorderColor: 'rgba(252,98,132,1)',
+			borderColor: red.alpha(1).rgbaString(),
+			backgroundColor: red.alpha(0.5).rgbaString(),
+			pointBorderColor: red.alpha(1).rgbaString(),
 			pointBackgroundColor: '#FFFFFF',
 			pointBorderWidth: 2,
 			data: [{
