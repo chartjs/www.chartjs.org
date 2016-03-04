@@ -60,7 +60,8 @@ export default function(ctx){
 		data: {
 			labels: new Array(count),
 			datasets: [{
-				backgroundColor: "#DBDDE0",
+				backgroundColor: "rgba(0,0,0,0.05)",
+				hoverBackgroundColor: "rgba(0,0,0,0.1)",
 				data: data
 			}]
 		}
