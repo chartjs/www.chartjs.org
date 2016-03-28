@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var fs = require('fs');
 var sourcemaps = require('gulp-sourcemaps');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
@@ -11,6 +12,10 @@ var gutil = require('gulp-util');
 var autoprefixer = require('gulp-autoprefixer');
 var plumber = require('gulp-plumber');
 var watch = require('gulp-watch');
+var marked = require('marked');
+var foreach = require('gulp-foreach');
+var nunjucks = require('gulp-nunjucks');
+var rename = require('gulp-rename');
 
 function compile(watch) {
 	var bundler = watchify(browserify('./src/index.js', { debug: true }).transform(babel, {presets: ["es2015"]}));
@@ -67,6 +72,39 @@ gulp.task('watch-less', function(){
 		['less']
 	);
 });
+
+gulp.task('move-docs', function(){
+	return gulp.src('./node_modules/chart.js/docs/*.md')
+		.pipe(gulp.dest('./docs'));
+});
+
+
+gulp.task('docs-template', ['move-docs'], function(cb){
+	var docs = {};
+
+	return gulp.src('./docs/*.md')
+		.pipe(foreach(function(stream, file){
+			docs[file.relative] = marked(file.contents.toString('utf8'));
+			return stream;
+		}))
+		.on('end', function(){
+			gulp.src('./src/templates/docs.html')
+				.pipe(nunjucks.compile({
+					doc: docs
+				}, { autoescape: false }))
+				.pipe(rename({basename: 'index'}))
+				.pipe(gulp.dest('./www/docs'));
+		});
+
+});
+
+gulp.task('home-template', function(){
+	return gulp.src('./src/templates/homepage.html')
+		.pipe(nunjucks.compile())
+		.pipe(rename({basename: 'index'}))
+		.pipe(gulp.dest('./www'));
+});
+
 
 gulp.task('default', ['server', 'watch-js', 'watch-less']);
 

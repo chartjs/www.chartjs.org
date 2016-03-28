@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Chart.js{% endblock title %}
+
+{% block content %}
+	<div class="background-chart fade-in">
+		<canvas id="background-bar"></canvas>
+	</div>
+	<div class="content-overlay fade-in-up animation-delay__1">
+		<div class="hero-container">
+			<img class="chart-logo fade-in animation-delay__3" src="/img/chartjs-logo.svg"/>
+			<div class="fade-in fade-in animation-delay__5">
+				<h1 class="hero-title">Chart.js</h1>
+				<h2 class="hero-subtitle">Simple yet flexible JavaScript charting for designers &amp; developers</h2>
+			</div>
+			<div class="hero-button-wrapper fade-in animation-delay__6">
+				<a class="button button__red" href="https://github.com/nnnick/Chart.js" target="_blank">Get Started</a>
+				<a class="button button__blue" href="/docs">Documentation</a>
+			</div>
+		</div>
+		<hr/>
+		<div class="feature-container fade-in animation-delay__7">
+			<div class="feature">
+				<div class="feature-text">
+					<h3 class="subtitle">
+						<span class="pill pill__new">New in 2.0</span>
+						Mixed chart types
+					</h3>
+					<p class="description">Mix and match bar and line charts to provide a clear visual distinction between datasets.</p>
+				</div>
+				<div class="feature-chart feature-chart__right">
+					<canvas id="mixed-chart" height="200" width="300"></canvas>
+				</div>
+			</div>
+			<div class="feature">
+				<div class="feature-chart feature-chart__left">
+					<canvas id="axis-chart" height="200" width="300"></canvas>
+				</div>
+				<div class="feature-text">
+					<h3 class="subtitle">
+						<span class="pill pill__new">New in 2.0</span>
+						New chart axis types
+					</h3>
+					<p class="description">Plot complex, sparse datasets on date time, logarithmic or even entirely custom scales with ease.</p>
+				</div>
+			</div>
+			<div class="feature">
+				<div class="feature-text">
+					<h3 class="subtitle">
+						<span class="pill pill__new">New in 2.0</span>
+						Animate everything!
+					</h3>
+					<p class="description">Out of the box stunning transitions when changing data, updating colours and adding datasets.</p>
+				</div>
+				<div class="feature-chart feature-chart__left">
+					<canvas id="animate-chart" height="200" width="300"></canvas>
+				</div>
+			</div>
+		</div>
+		<hr/>
+		<div class="feature-small-container fade-in animation-delay__7">
+			<div class="feature-small">
+				<div class="feature-icon">
+					<img src="/img/open-source.svg"/>
+				</div>
+				<h4 class="subtitle subtitle__small">Open source</h4>
+				<p class="description description__small">Chart.js is a community maintained project, contributions welcome!</p>
+			</div>
+			<div class="feature-small">
+				<div class="feature-icon">
+					<img src="/img/chart-types.svg"/>
+				</div>
+				<h4 class="subtitle subtitle__small">8 Chart types</h4>
+				<p class="description description__small">Visualize your data in 8 different ways; each of them animated and customisable.</p>
+			</div>
+			<div class="feature-small">
+				<div class="feature-icon">
+					<img src="/img/canvas-icon.svg"/>
+				</div>
+				<h4 class="subtitle subtitle__small">HTML5 Canvas</h4>
+				<p class="description description__small">Great rendering performance across all modern browsers (IE9+).</p>
+			</div>
+			<div class="feature-small">
+				<div class="feature-icon">
+					<img src="/img/responsive.svg"/>
+				</div>
+				<h4 class="subtitle subtitle__small">Responsive</h4>
+				<p class="description description__small">Redraws charts on window resize for perfect scale granularity.</p>
+			</div>
+		</div>
+
+		<hr/>
+
+		<div class="link-container fade-in animation-delay__7">
+			<h2 class="subtitle">
+				<a href="https://github.com/nnnick/Chart.js" target="_blank">Find Chart.js on GitHub</a> or <a href="/docs"> Read detailed documentation</a>
+			</h2>
+		</div>
+	</div>
+
+	<footer class="fade-in animation-delay__8">
+		<div class="footer-logo">
+			<img src="/img/icon.svg"/>
+		</div>
+		<p class="footer-note">Chart.js was built from the hard work of all <a href="https://github.com/nnnick/Chart.js/contributors" target="_blank">these contributors.</a>
+	</footer>
+
+	<script async src="/build.js"></script>
+{% endblock content %}

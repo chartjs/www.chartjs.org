@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+
+	<head>
+		<title>{% block title %}{% endblock title %}</title>
+		{% include 'typekit.html' %}
+		{% include 'modernizr.html' %}
+		<link rel="stylesheet" type="text/css" href="/styles.css">
+	</head>
+
+	<body>
+		{% block content %}{% endblock content %}
+	</body>
+
+</html>
