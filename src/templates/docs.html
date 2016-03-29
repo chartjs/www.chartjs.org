@@ -4,13 +4,24 @@
 {% block title %}Chart.js | Documentation{% endblock title %}
 
 {% block content %}
-	{{ doc['00-Getting-Started.md'] }}
-	{{ doc['01-Scales.md'] }}
-	{{ doc['02-Line-Chart.md'] }}
-	{{ doc['03-Bar-Chart.md'] }}
-	{{ doc['04-Radar-Chart.md'] }}
-	{{ doc['05-Polar-Area-Chart.md'] }}
-	{{ doc['06-Pie-Doughnut-Chart.md'] }}
-	{{ doc['07-Advanced.md'] }}
-	{{ doc['08-Notes.md'] }}
+	<div class="documentation-header">
+		<img class="chart-logo" src="/img/chartjs-logo.svg"/>
+		<h1 class="hero-title">Chart.js</h1>
+		<h2 class="hero-subtitle">API Documentation</h2>
+	</div>
+	<div class="documentation-body">
+		{{ doc['00-Getting-Started.md'] }}
+		{{ doc['01-Scales.md'] }}
+		{{ doc['02-Line-Chart.md'] }}
+		{{ doc['03-Bar-Chart.md'] }}
+		{{ doc['04-Radar-Chart.md'] }}
+		{{ doc['05-Polar-Area-Chart.md'] }}
+		{{ doc['06-Pie-Doughnut-Chart.md'] }}
+		{{ doc['07-Advanced.md'] }}
+		{{ doc['08-Notes.md'] }}
+	</div>
+	<hr/>
+	<footer>
+		{% include 'footer.html' %}
+	</footer>
 {% endblock content %}

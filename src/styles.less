@@ -52,6 +52,12 @@ body {
 	background-color: @white;
 }
 
+.documentation-body {
+	max-width: 1200px;
+	padding: 30px 60px;
+	margin: 20px auto;
+}
+
 .hero-container {
 	text-align: center;
 }
@@ -146,6 +152,42 @@ hr {
 	border: 0;
 	border-bottom: 1px solid @grey;
 }
+
+table {
+	margin: 40px 0;
+	width: 100%;
+	overflow-x: auto;
+	border-collapse: collapse;
+	border: 1px solid @grey;
+	td, th {
+		text-align: left;
+		padding: 12px;
+		border-bottom: 1px solid @grey;
+		border-right: 1px solid fade(@grey, 50%);
+		&:last-child {
+			border-right: 0;
+		}
+	}
+	th {
+		background-color: fade(@grey, 40%);
+	}
+	tr:nth-child(2n) {
+		td {
+			background-color: fade(@grey, 20%);
+		}
+	}
+}
+
+pre {
+	margin: 20px 0;
+	max-width: 100%;
+	overflow-x: auto;
+	background-color: fade(@grey, 40%);
+	padding: 12px 20px;
+	border-radius: 8px;
+}
+
+
 // Hero banner styles
 .chart-logo {
 	margin: 1em 0;
