@@ -73,11 +73,19 @@ gulp.task('watch-less', function(){
 	);
 });
 
+gulp.task('watch-templates', function(){
+	return gulp.watch(
+		'./src/**/*.html',
+		['template']
+	);
+});
+
 gulp.task('move-docs', function(){
 	return gulp.src('./node_modules/chart.js/docs/*.md')
 		.pipe(gulp.dest('./docs'));
 });
 
+gulp.task('template', ['docs-template', 'home-template']);
 
 gulp.task('docs-template', ['move-docs'], function(cb){
 	var docs = {};
@@ -106,5 +114,5 @@ gulp.task('home-template', function(){
 });
 
 
-gulp.task('default', ['server', 'watch-js', 'watch-less']);
+gulp.task('default', ['server', 'watch-js', 'watch-less', 'watch-templates']);
 
