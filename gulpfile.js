@@ -90,9 +90,53 @@ gulp.task('template', ['docs-template', 'home-template']);
 gulp.task('docs-template', ['move-docs'], function(cb){
 	var docs = {};
 
+	var openLinksInNewTab = function(href, title, text){
+		return '<a href="' + href + '" target="_blank">' + text + '</a>';
+	}
+
 	return gulp.src('./docs/*.md')
 		.pipe(foreach(function(stream, file){
-			docs[file.relative] = marked(file.contents.toString('utf8'));
+			// TODO - parse yml front matter for anchor yaml
+			var anchor = file.relative.replace('.md', '');
+
+			var renderer = new marked.Renderer();
+
+			var documentationBlock = {};
+
+			documentationBlock.title = file.relative;
+			documentationBlock.links = [];
+
+			renderer.heading = function(text, level){
+
+				var html = '<h' + level;
+
+				// For h3s and above - we'll assign an anchor link for this.
+				if (level <= 3){
+					var escaped = text.toLowerCase().replace(/[^\w]+/g, '-');
+
+					var link = anchor + '-' + escaped;
+
+					documentationBlock.links.push(link);
+
+					html += ' id="' + link +'"';
+				}
+
+				html += '>' + text + '</h'+ level + '>';
+
+				return html;
+			};
+
+			renderer.link = openLinksInNewTab;
+
+			documentationBlock.text = marked(
+				file.contents.toString('utf8'),
+				{
+					renderer: renderer
+				}
+			);
+
+			docs[file.relative] = documentationBlock;
+
 			return stream;
 		}))
 		.on('end', function(){
