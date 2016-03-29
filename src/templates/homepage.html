@@ -3,6 +3,10 @@
 
 {% block title %}Chart.js{% endblock title %}
 
+{% block head %}
+	{% include 'modernizr.html' %}
+{% endblock head %}
+
 {% block content %}
 	<div class="background-chart fade-in">
 		<canvas id="background-bar"></canvas>

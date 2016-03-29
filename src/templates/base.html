@@ -4,7 +4,7 @@
 	<head>
 		<title>{% block title %}{% endblock title %}</title>
 		{% include 'typekit.html' %}
-		{% include 'modernizr.html' %}
+		{% block head %}{% endblock head %}
 		<link rel="stylesheet" type="text/css" href="/styles.css">
 	</head>
 
