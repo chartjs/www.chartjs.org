@@ -91,7 +91,12 @@ gulp.task('docs-template', ['move-docs'], function(cb){
 	var docs = {};
 
 	var openLinksInNewTab = function(href, title, text){
-		return '<a href="' + href + '" target="_blank">' + text + '</a>';
+		var html = '<a href="' + href + '"';
+		// If we're not using an internal anchor link, open in a new tab
+		if (href.substring(0,1) !== '#'){
+			html += ' target="_blank"';
+		}
+		return  html += '>' + text + '</a>';
 	}
 
 	return gulp.src('./docs/*.md')
