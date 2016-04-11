@@ -129,7 +129,10 @@ gulp.task('docs-template', ['move-docs'], function(cb){
 					documentationBlock.links.push(link);
 
 					html += ' id="' + link +'"';
+
+					text = '<a class="fragment-link" href="#' + link + '">' + text + '</a>';
 				}
+
 
 				html += '>' + text + '</h'+ level + '>';
 

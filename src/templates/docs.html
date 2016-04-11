@@ -29,7 +29,7 @@
 {% macro section(block) %}
 	<section id="{{ block.anchor }}">
 		<h2 class="section-title">
-			<a href="#{{ block.anchor }}">{{ block.title }}</a>
+			<a class="fragment-link" href="#{{ block.anchor }}">{{ block.title }}</a>
 		</h2>
 		<div class="section-text">
 			{{ block.text }}
