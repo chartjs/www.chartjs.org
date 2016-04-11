@@ -10,18 +10,29 @@
 		<h2 class="hero-subtitle">API Documentation</h2>
 	</div>
 	<div class="documentation-body">
-		{{ doc['00-Getting-Started.md'].text }}
-		{{ doc['01-Scales.md'].text }}
-		{{ doc['02-Line-Chart.md'].text }}
-		{{ doc['03-Bar-Chart.md'].text }}
-		{{ doc['04-Radar-Chart.md'].text }}
-		{{ doc['05-Polar-Area-Chart.md'].text }}
-		{{ doc['06-Pie-Doughnut-Chart.md'].text }}
-		{{ doc['07-Advanced.md'].text }}
-		{{ doc['08-Notes.md'].text }}
+		{{ section(doc['getting-started']) }}
+		{{ section(doc['scales']) }}
+		{{ section(doc['line-chart']) }}
+		{{ section(doc['bar-chart']) }}
+		{{ section(doc['radar-chart']) }}
+		{{ section(doc['polar-area-chart']) }}
+		{{ section(doc['doughnut-pie-chart']) }}
+		{{ section(doc['advanced-usage']) }}
+		{{ section(doc['notes']) }}
 	</div>
 	<hr/>
 	<footer>
 		{% include 'footer.html' %}
 	</footer>
 {% endblock content %}
+
+{% macro section(block) %}
+	<section id="{{ block.anchor }}">
+		<h2 class="section-title">
+			<a href="#{{ block.anchor }}">{{ block.title }}</a>
+		</h2>
+		<div class="section-text">
+			{{ block.text }}
+		</div>
+	</section>
+{% endmacro %}

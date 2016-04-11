@@ -16,6 +16,7 @@ var marked = require('marked');
 var foreach = require('gulp-foreach');
 var nunjucks = require('gulp-nunjucks');
 var rename = require('gulp-rename');
+var fm = require('front-matter');
 
 function compile(watch) {
 	var bundler = watchify(browserify('./src/index.js', { debug: true }).transform(babel, {presets: ["es2015"]}));
@@ -101,15 +102,19 @@ gulp.task('docs-template', ['move-docs'], function(cb){
 
 	return gulp.src('./docs/*.md')
 		.pipe(foreach(function(stream, file){
-			// TODO - parse yml front matter for anchor yaml
-			var anchor = file.relative.replace('.md', '');
+			var contents = file.contents.toString('utf8');
+
+			var parsed = fm(contents);
 
 			var renderer = new marked.Renderer();
 
+			var anchor = parsed.attributes.anchor;
+
 			var documentationBlock = {};
 
-			documentationBlock.title = file.relative;
 			documentationBlock.links = [];
+			documentationBlock.anchor = anchor;
+			documentationBlock.title = parsed.attributes.title;
 
 			renderer.heading = function(text, level){
 
@@ -134,13 +139,13 @@ gulp.task('docs-template', ['move-docs'], function(cb){
 			renderer.link = openLinksInNewTab;
 
 			documentationBlock.text = marked(
-				file.contents.toString('utf8'),
+				parsed.body,
 				{
 					renderer: renderer
 				}
 			);
 
-			docs[file.relative] = documentationBlock;
+			docs[anchor] = documentationBlock;
 
 			return stream;
 		}))
