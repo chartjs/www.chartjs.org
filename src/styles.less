@@ -56,6 +56,18 @@ body {
 	max-width: 1200px;
 	padding: 30px 60px;
 	margin: 20px auto;
+
+	h1, h2, h3, h4, h5, h6 {
+		position: relative;
+		font-family: @title;
+	}
+
+	h2 {
+		margin-top: 2.5rem;
+	}
+	h3 {
+		margin-top: 2rem;
+	}
 }
 
 .hero-container {
@@ -102,6 +114,24 @@ a {
 	color: @blue;
 	text-decoration: none;
 	border-bottom: 1px solid @blue;
+}
+
+.fragment-link {
+	color: @black;
+	border-bottom: 0;
+	&:before {
+		content: '#';
+		color: fade(@black, 10%);
+		transition: color 100ms ease-out;
+		position: absolute;
+		left: -1.25rem;
+	}
+
+	&:hover {
+		&:before {
+			color: @black;
+		}
+	}
 }
 .button {
 	border: 0;
@@ -179,12 +209,18 @@ table {
 }
 
 pre {
-	margin: 20px 0;
+	margin: 2rem 0;
 	max-width: 100%;
 	overflow-x: auto;
 	background-color: fade(@grey, 40%);
 	padding: 12px 20px;
 	border-radius: 8px;
+}
+
+ul {
+	li {
+		margin-top: 0.6rem;
+	}
 }
 
 
