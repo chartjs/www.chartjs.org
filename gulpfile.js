@@ -44,7 +44,7 @@ function compile(watch) {
 gulp.task('build', function() { return compile(); });
 gulp.task('watch-js', function(){ return compile(true); });
 
-gulp.task('server', function(){
+gulp.task('server', ['template', 'less', 'build'], function(){
 	connect.server({
 		root: 'www',
 		port: 8080
@@ -52,7 +52,7 @@ gulp.task('server', function(){
 });
 
 gulp.task('less', function () {
-	return gulp.src('./src/styles.less')
+	return gulp.src('./src/*.less')
 	.pipe(plumber({
 		errorHandler: function(err){
 			gutil.log(gutil.colors.red(err));
@@ -144,7 +144,16 @@ gulp.task('docs-template', ['move-docs'], function(cb){
 			documentationBlock.text = marked(
 				parsed.body,
 				{
-					renderer: renderer
+					renderer: renderer,
+					highlight: function (code, language) {
+						var highlight = require('highlight.js');
+						if (language === 'javascript' || language === 'html'){
+							return highlight.highlight(language, code).value;
+						}
+						else {
+							return highlight.highlightAuto(code).value;
+						}
+					}
 				}
 			);
 
