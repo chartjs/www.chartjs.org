@@ -23,10 +23,13 @@ html {
 }
 
 body {
-	position: relative;
-	padding-top: 120px;
 	color: @black;
 	font-family: @body;
+}
+
+.homepage {
+	position: relative;
+	padding-top: 120px;
 }
 
 .background-chart {
@@ -52,11 +55,28 @@ body {
 	background-color: @white;
 }
 
-.documentation-body {
-	max-width: 1200px;
-	padding: 30px 60px;
-	margin: 20px auto;
 
+.documentation-header, .documentation-body {
+	max-width: 1200px;
+	margin: 20px auto;
+	padding: 30px 60px;
+}
+
+.documentation-header {
+	padding-bottom: 0;
+	.chart-logo,
+	.documentation-title-wrapper {
+		float: left;
+	}
+	.documentation-title-wrapper {
+		margin: 1em 0;
+		padding: 1em;
+	}
+	.clearfix;
+}
+
+.documentation-body {
+	padding-top: 0;
 	h1, h2, h3, h4, h5, h6 {
 		position: relative;
 		font-family: @title;
