@@ -42,7 +42,7 @@ function compile(watch) {
 }
 
 gulp.task('build', function() { return compile(); });
-gulp.task('watch-js', function(){ return compile(true); });
+gulp.task('watch-js', ['build'], function(){ return compile(true); });
 
 gulp.task('server', ['template', 'less', 'build'], function(){
 	connect.server({
@@ -67,14 +67,14 @@ gulp.task('less', function () {
 	.pipe(gulp.dest('./www'));
 });
 
-gulp.task('watch-less', function(){
+gulp.task('watch-less', ['less'], function(){
 	return gulp.watch(
 		'./src/styles.less',
 		['less']
 	);
 });
 
-gulp.task('watch-templates', function(){
+gulp.task('watch-templates', ['template'], function(){
 	return gulp.watch(
 		'./src/**/*.html',
 		['template']
@@ -151,7 +151,7 @@ gulp.task('docs-template', ['move-docs'], function(cb){
 							return highlight.highlight(language, code).value;
 						}
 						else {
-							return highlight.highlightAuto(code).value;
+							return code;
 						}
 					}
 				}
