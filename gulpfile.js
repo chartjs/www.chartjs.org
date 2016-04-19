@@ -116,6 +116,13 @@ gulp.task('docs-template', ['move-docs'], function(cb){
 			documentationBlock.anchor = anchor;
 			documentationBlock.title = parsed.attributes.title;
 
+			var tableSuper = renderer.table;
+
+			renderer.table = function(){
+				return '<div class="table-wrapper">' + tableSuper.apply(renderer, arguments) + '</div>';
+			}
+
+
 			renderer.heading = function(text, level){
 
 				var html = '<h' + level;

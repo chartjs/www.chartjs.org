@@ -207,12 +207,17 @@ hr {
 	border-bottom: 1px solid @grey;
 }
 
-table {
+
+.table-wrapper {
 	margin: 40px 0;
 	width: 100%;
 	overflow-x: auto;
-	border-collapse: collapse;
+	-webkit-overflow-scrolling: touch;
 	border: 1px solid @grey;
+}
+table {
+	min-width: 100%;
+	border-collapse: collapse;
 	td, th {
 		text-align: left;
 		padding: 12px;
@@ -228,6 +233,11 @@ table {
 	tr:nth-child(2n) {
 		td {
 			background-color: fade(@grey, 20%);
+		}
+	}
+	tr:last-child {
+		td, th {
+			border-bottom: 0;
 		}
 	}
 }
