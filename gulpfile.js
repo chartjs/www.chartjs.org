@@ -133,7 +133,10 @@ gulp.task('docs-template', ['move-docs'], function(cb){
 
 					var link = anchor + '-' + escaped;
 
-					documentationBlock.links.push(link);
+					documentationBlock.links.push({
+						anchor: link,
+						text: text
+					});
 
 					html += ' id="' + link +'"';
 

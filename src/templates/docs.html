@@ -4,7 +4,19 @@
 {% block title %}Chart.js | Documentation{% endblock title %}
 
 {% block content %}
-	<body>
+	<body class="sidebar-padded">
+		<nav class="sidebar">
+			{{ sidebar(doc['getting-started']) }}
+			{{ sidebar(doc['line-chart']) }}
+			{{ sidebar(doc['bar-chart']) }}
+			{{ sidebar(doc['radar-chart']) }}
+			{{ sidebar(doc['polar-area-chart']) }}
+			{{ sidebar(doc['doughnut-pie-chart']) }}
+			{{ sidebar(doc['advanced-usage']) }}
+			{{ sidebar(doc['scales']) }}
+			{{ sidebar(doc['notes']) }}
+		</nav>
+
 		<div class="documentation-header">
 			<img class="chart-logo" src="/img/chartjs-logo.svg"/>
 			<div class="documentation-title-wrapper">
@@ -40,4 +52,18 @@
 			{{ block.text }}
 		</div>
 	</section>
+{% endmacro %}
+
+{% macro sidebar(block) %}
+	<div class="sidebar-section">
+		<h4 class="section-link">
+			<a href="#{{ block.anchor }}">{{ block.title }}</a>
+		</h4>
+		<ul class="section-sublinks">
+			{% for link in block.links %}
+				<li>
+					<a href="#{{ link.anchor }}">{{ link.text }}</a></li>
+			{% endfor %}
+		</ul>
+	</div>
 {% endmacro %}

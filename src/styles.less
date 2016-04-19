@@ -14,12 +14,15 @@
 @title: "proxima-nova-soft",sans-serif;
 @body: "proxima-nova",sans-serif;
 
+@small-screen-query: ~"only screen and (max-width: 978px)";
 @tablet-query: ~"only screen and (max-width: 768px)";
 @mobile-query: ~"only screen and (max-width: 500px)";
 
 * {
 	box-sizing: border-box;
 }
+
+
 
 html {
 	font-size: 100%;
@@ -30,9 +33,21 @@ html {
 	}
 }
 
+@sidebar-size: 240px;
+@sidebar-size__small: 220px;
+
 body {
 	color: @black;
 	font-family: @body;
+	&.sidebar-padded {
+		padding-left: @sidebar-size;
+		@media @tablet-query {
+			padding-left: @sidebar-size__small;
+		}
+		@media @mobile-query {
+			padding-left: 0;
+		}
+	}
 }
 
 .homepage {
@@ -69,6 +84,10 @@ body {
 	margin: 20px auto;
 	padding: 30px 60px;
 	@media @tablet-query {
+		padding-left: 40px;
+		padding-right: 40px;
+	}
+	@media @mobile-query {
 		padding-left: 20px;
 		padding-right: 20px;
 	}
@@ -108,6 +127,56 @@ body {
 	}
 	h3 {
 		margin-top: 2rem;
+	}
+}
+
+.sidebar {
+	width: @sidebar-size;
+	@media @tablet-query {
+		width: @sidebar-size__small;
+	}
+	@media @mobile-query {
+		display: none;
+	}
+	padding: 0.2rem 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	max-height: 100%;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+
+	border-right: 1px solid @grey;
+
+	.sidebar-section {
+		padding: 0.4rem 0;
+	}
+	.section-link {
+		margin: 0;
+		display: block;
+		padding: 0.4rem 0.8rem;
+		font-weight: bold;
+	}
+	ul {
+		padding: 0;
+		margin: 0;
+	}
+	ul li {
+		list-style: none;
+		display: block;
+		margin: 0;
+		padding: 0.4rem 0.8rem 0.4rem 1.2rem;
+		font-size: 0.9rem;
+	}
+	a {
+		transition: color 120ms ease-out, border-color 120ms ease-out;
+		@color: lighten(@black, 10%);
+		color: @color;
+		border-bottom-color: transparent;
+		&:hover {
+			border-bottom-color: @blue;
+			color: @blue;
+		}
 	}
 }
 
