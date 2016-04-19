@@ -52,7 +52,7 @@ gulp.task('server', ['template', 'less', 'build'], function(){
 });
 
 gulp.task('less', function () {
-	return gulp.src('./src/*.less')
+	return gulp.src('./src/styles.less')
 	.pipe(plumber({
 		errorHandler: function(err){
 			gutil.log(gutil.colors.red(err));
@@ -69,7 +69,7 @@ gulp.task('less', function () {
 
 gulp.task('watch-less', ['less'], function(){
 	return gulp.watch(
-		'./src/styles.less',
+		'./src/*.less',
 		['less']
 	);
 });
