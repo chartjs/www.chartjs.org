@@ -24,6 +24,10 @@
 html {
 	font-size: 100%;
 	-webkit-font-smoothing: antialiased;
+
+	@media @tablet-query {
+		font-size: 80%;
+	}
 }
 
 body {
@@ -64,17 +68,30 @@ body {
 	max-width: 1200px;
 	margin: 20px auto;
 	padding: 30px 60px;
+	@media @tablet-query {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
 }
 
 .documentation-header {
 	padding-bottom: 0;
+	@media @mobile-query {
+		text-align: center;
+	}
 	.chart-logo,
 	.documentation-title-wrapper {
 		float: left;
+		@media @mobile-query {
+			float: none;
+		}
 	}
 	.documentation-title-wrapper {
 		margin: 1em 0;
 		padding: 1em;
+		@media @mobile-query {
+			margin: 0;
+		}
 	}
 	.clearfix;
 }
