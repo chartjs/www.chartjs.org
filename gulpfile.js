@@ -86,6 +86,11 @@ gulp.task('move-docs', function(){
 		.pipe(gulp.dest('./docs'));
 });
 
+gulp.task('move-favicon', function(){
+	return gulp.src('./src/favicon.ico')
+		.pipe(gulp.dest('./www'));
+})
+
 gulp.task('template', ['docs-template', 'home-template']);
 
 gulp.task('docs-template', ['move-docs'], function(cb){
@@ -189,6 +194,8 @@ gulp.task('home-template', function(){
 		.pipe(gulp.dest('./www'));
 });
 
+
+gulp.task('site', ['template', 'less', 'move-favicon', 'build-js']);
 
 gulp.task('default', ['server', 'watch-js', 'watch-less', 'watch-templates']);
 

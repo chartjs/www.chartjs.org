@@ -7,5 +7,6 @@ docs
 node_modules
 
 www/index.html
+www/favicon.ico
 
 www/syntax-highlight.css
