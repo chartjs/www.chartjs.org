@@ -6,6 +6,7 @@ var buffer = require('vinyl-buffer');
 var browserify = require('browserify');
 var watchify = require('watchify');
 var babel = require('babelify');
+var uglify = require('gulp-uglify');
 var connect = require('gulp-connect');
 var less = require('gulp-less');
 var gutil = require('gulp-util');
@@ -18,33 +19,25 @@ var nunjucks = require('gulp-nunjucks');
 var rename = require('gulp-rename');
 var fm = require('front-matter');
 
-function compile(watch) {
-	var bundler = watchify(browserify('./src/index.js', { debug: true }).transform(babel, {presets: ["es2015"]}));
 
-	function rebundle() {
-		bundler.bundle()
-			.on('error', function(err) { console.error(err); this.emit('end'); })
-			.pipe(source('build.js'))
-			.pipe(buffer())
-			.pipe(sourcemaps.init({ loadMaps: true }))
-			.pipe(sourcemaps.write('./'))
-			.pipe(gulp.dest('./www'));
-	}
+gulp.task('build-js', function() {
+	return browserify({entries: './src/index.js', debug: gutil.env.debug})
+		.transform(babel, {presets: ["es2015"]})
+		.bundle()
+		.pipe(source('build.js'))
+		.pipe(buffer())
+		.pipe(uglify())
+		.pipe(gulp.dest('www'));
 
-	if (watch) {
-		bundler.on('update', function() {
-			gutil.log(gutil.colors.green('-> Bundling...'));
-			rebundle();
-		});
-	}
+});
+gulp.task('watch-js', ['build-js'], function(){
+	return gulp.watch(
+		'./src/*.js',
+		['build-js']
+	);
+});
 
-	rebundle();
-}
-
-gulp.task('build', function() { return compile(); });
-gulp.task('watch-js', ['build'], function(){ return compile(true); });
-
-gulp.task('server', ['template', 'less', 'build'], function(){
+gulp.task('server', ['template', 'less', 'build-js'], function(){
 	connect.server({
 		root: 'www',
 		port: 8080
