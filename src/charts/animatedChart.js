@@ -92,7 +92,6 @@ export default function(ctx){
 					hoverRadius: 0
 				}
 			},
-			responsive: false,
 			animation:{
 				onComplete: () => {
 					if (timeout) {
