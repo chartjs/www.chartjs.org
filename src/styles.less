@@ -132,6 +132,22 @@ body {
 	h3 {
 		margin-top: 2rem;
 	}
+	.half {
+		width: 50%;
+		float: left;
+		padding-bottom: 20px;
+		@media @tablet-query {
+			width: auto;
+			float: none;
+		}
+		&:nth-child(2){
+			&:after {
+				clear: both;
+				content: '';
+				display: table;
+			}
+		}
+	}
 }
 
 .sidebar {
