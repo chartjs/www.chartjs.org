@@ -37,7 +37,7 @@ gulp.task('watch-js', ['build-js'], function(){
 	);
 });
 
-gulp.task('server', ['template', 'less', 'build-js'], function(){
+gulp.task('server', ['site'], function(){
 	connect.server({
 		root: 'www',
 		port: 8080
@@ -82,7 +82,12 @@ gulp.task('move-docs', function(){
 gulp.task('move-favicon', function(){
 	return gulp.src('./src/favicon.ico')
 		.pipe(gulp.dest('./www'));
-})
+});
+
+gulp.task('move-img', function(){
+	return gulp.src('./src/img/*')
+		.pipe(gulp.dest('./www/img'));
+});
 
 gulp.task('template', ['docs-template', 'home-template']);
 
@@ -188,7 +193,7 @@ gulp.task('home-template', function(){
 });
 
 
-gulp.task('site', ['template', 'less', 'move-favicon', 'build-js']);
+gulp.task('site', ['template', 'less', 'move-favicon', 'build-js', 'move-img']);
 
 gulp.task('default', ['server', 'watch-js', 'watch-less', 'watch-templates']);
 
