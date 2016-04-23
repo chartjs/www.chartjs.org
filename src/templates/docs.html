@@ -4,17 +4,24 @@
 {% block title %}Chart.js | Documentation{% endblock title %}
 
 {% block content %}
+
+	{% set blocks = [
+			doc['getting-started'],
+			doc['line-chart'],
+			doc['bar-chart'],
+			doc['radar-chart'],
+			doc['polar-area-chart'],
+			doc['doughnut-pie-chart'],
+			doc['scales'],
+			doc['advanced-usage'],
+			doc['notes']
+	] %}
+
 	<body class="sidebar-padded">
 		<nav class="sidebar">
-			{{ sidebar(doc['getting-started']) }}
-			{{ sidebar(doc['line-chart']) }}
-			{{ sidebar(doc['bar-chart']) }}
-			{{ sidebar(doc['radar-chart']) }}
-			{{ sidebar(doc['polar-area-chart']) }}
-			{{ sidebar(doc['doughnut-pie-chart']) }}
-			{{ sidebar(doc['advanced-usage']) }}
-			{{ sidebar(doc['scales']) }}
-			{{ sidebar(doc['notes']) }}
+			{% for block in blocks %}
+				{{ sidebar(block) }}
+			{% endfor %}
 		</nav>
 
 		<div class="documentation-header">
@@ -25,15 +32,9 @@
 			</div>
 		</div>
 		<div class="documentation-body">
-			{{ section(doc['getting-started']) }}
-			{{ section(doc['line-chart']) }}
-			{{ section(doc['bar-chart']) }}
-			{{ section(doc['radar-chart']) }}
-			{{ section(doc['polar-area-chart']) }}
-			{{ section(doc['doughnut-pie-chart']) }}
-			{{ section(doc['advanced-usage']) }}
-			{{ section(doc['scales']) }}
-			{{ section(doc['notes']) }}
+			{% for block in blocks %}
+				{{ section(block) }}
+			{% endfor %}
 		</div>
 		<hr/>
 		<footer>
