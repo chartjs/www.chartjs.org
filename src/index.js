@@ -12,7 +12,7 @@ import render from './docs.js';
 	// If we're on the docs page render the docs blocks
 	// else we'll render the homepage chart visuals
 	if (document.location.pathname.match(/\/docs/)){
-		render('bar-chart');
+		render('bar-chart', [2,0]);
 		render('line-chart', [2,1]);
 		render('radar-chart');
 		render('polar-area-chart');
