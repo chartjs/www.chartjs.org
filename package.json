@@ -31,7 +31,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
-    "chart.js": "2.1.4",
+    "chart.js": "2.2.0-rc.1",
     "normalize.css": "^3.0.3"
   }
 }

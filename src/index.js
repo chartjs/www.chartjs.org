@@ -18,6 +18,7 @@ import render from './docs.js';
 		render('polar-area-chart');
 		render('doughnut-pie-chart', [2, 0]);
 		render('doughnut-pie-chart', [2, 1], 1);
+		render('bubble-chart');
 	}
 	else {
 		Chart.defaults.global.tooltips.enabled = false;
