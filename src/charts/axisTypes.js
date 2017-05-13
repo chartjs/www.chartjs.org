@@ -49,7 +49,6 @@ export default function(ctx){
 		}]
 	};
 
-
 	new Chart.Scatter(ctx, {
 		data: scatterChartData,
 		options: {
@@ -92,7 +91,4 @@ export default function(ctx){
 			}
 		}
 	});
-
-
-
 }

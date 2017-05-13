@@ -1,11 +1,9 @@
 import Chart from 'chart.js';
 
-
 import backgroundBars from './charts/backgroundBars';
 import mixedTypes from './charts/mixedTypes';
 import axisTypes from './charts/axisTypes';
 import animatedChart from './charts/animatedChart';
-
 
 (()=>{
 	Chart.defaults.global.tooltips.enabled = false;
