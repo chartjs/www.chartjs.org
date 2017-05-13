@@ -15,11 +15,6 @@ var foreach = require('gulp-foreach');
 var nunjucks = require('gulp-nunjucks');
 var rename = require('gulp-rename');
 var fm = require('front-matter');
-var s3 = require('gulp-s3');
-var gzip = require('gulp-gzip');
-
-var aws = require('./aws.json');
-
 
 gulp.task('build-js', function() {
 	return browserify({entries: './src/index.js', debug: gutil.env.debug})
@@ -197,14 +192,3 @@ gulp.task('home-template', function(){
 gulp.task('site', ['template', 'less', 'move-favicon', 'build-js', 'move-img']);
 
 gulp.task('default', ['server', 'watch-js', 'watch-less', 'watch-templates']);
-
-
-gulp.task('deploy', ['site'], function(){
-	gulp.src('./www/**/*')
-		.pipe(gzip())
-		.pipe(
-			s3(aws, {
-				gzippedOnly: true
-			})
-		);
-});
