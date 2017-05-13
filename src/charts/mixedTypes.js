@@ -5,23 +5,23 @@ const randomScalingFactor = function() {
 	return Math.round(Math.random() * 100);
 };
 
-export default function(ctx){
+export default function(ctx) {
 
 	var barChartData = {
-		labels: ["A", "B", "C", "D", "E", "F", "G"],
+		labels: ['A', 'B', 'C', 'D', 'E', 'F', 'G'],
 		datasets: [{
 			type: 'bar',
 			backgroundColor: colours.mauve,
 			data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
 			borderColor: 'white',
 			borderWidth: 2
-		},{
+		}, {
 			type: 'bar',
 			backgroundColor: colours.blue,
 			data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
 			borderColor: 'white',
 			borderWidth: 2
-		},{
+		}, {
 			type: 'line',
 			backgroundColor: Chart.helpers.color(colours.yellow).alpha(0.5).rgbaString(),
 			data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
@@ -29,8 +29,8 @@ export default function(ctx){
 			borderWidth: 1,
 			pointBorderColor: Chart.helpers.color(colours.yellow).alpha(1).rgbaString(),
 			pointBorderWidth: 2,
-			pointBackgroundColor: "white"
-		} ]
+			pointBackgroundColor: 'white'
+		}]
 	};
 
 
@@ -39,7 +39,7 @@ export default function(ctx){
 	new Chart.Bar(ctx, {
 		data: barChartData,
 		options: {
-			tooltips:{
+			tooltips: {
 				enabled: false
 			},
 			elements: {
@@ -55,7 +55,7 @@ export default function(ctx){
 						zeroLineColor: axisGrey
 					}
 				}],
-				yAxes:[{
+				yAxes: [{
 					gridLines: {
 						color: gridGrey,
 						zeroLineColor: axisGrey
@@ -71,5 +71,4 @@ export default function(ctx){
 			}
 		}
 	});
-
 }

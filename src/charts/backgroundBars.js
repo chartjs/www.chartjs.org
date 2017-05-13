@@ -1,17 +1,16 @@
 import Chart from 'chart.js';
 
-export default function(ctx){
+export default function(ctx) {
 
-	const randomize = function(){
+	const randomize = function() {
 		return (Math.random() * 80) + 20;
-	}
-
+	};
 
 	const count = 100;
 
-	const randomBar = function(){
+	const randomBar = function() {
 		return Math.round(Math.random() * count);
-	}
+	};
 
 	var data = [];
 
@@ -67,7 +66,5 @@ export default function(ctx){
 		}
 	};
 
-
 	const barChart = new Chart.Bar(ctx, barChartConfig);
-
 }

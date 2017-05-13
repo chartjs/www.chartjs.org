@@ -1,26 +1,28 @@
 import Chart from 'chart.js';
 
-import { red, yellow, blue, green, grey } from '../colours.js';
+import {red, yellow, blue, green, grey} from '../colours.js';
 
 const randomScalingFactor = function() {
 	return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 85);
 };
-const randomDataPoint = function(){
+
+const randomDataPoint = function() {
 	const radius = Math.abs(randomScalingFactor()) / 5;
 	return {
 		x: randomScalingFactor(),
 		y: randomScalingFactor(),
 		r: radius
 	};
-}
-const randomDataSet = function(count = 10){
+};
+
+const randomDataSet = function(count = 10) {
 	var dataset = [];
 	for (let i = count - 1; i >= 0; i--) {
-		dataset.push(randomDataPoint())
+		dataset.push(randomDataPoint());
 	}
 
 	return dataset;
-}
+};
 
 const shuffle = function(array) {
 	let counter = array.length;
@@ -40,36 +42,35 @@ const shuffle = function(array) {
 	}
 
 	return array;
-}
+};
+
 const colours = [grey, red, yellow, blue, green];
 
 var datasets = [{
-		backgroundColor: grey,
-		data: randomDataSet()
-	}, {
-		backgroundColor: red,
-		data: randomDataSet()
-	}, {
-		backgroundColor: blue,
-		data: randomDataSet()
-	}, {
-		backgroundColor: yellow,
-		data: randomDataSet()
-	}, {
-		backgroundColor: green,
-		data: randomDataSet()
-	}
-];
+	backgroundColor: grey,
+	data: randomDataSet()
+}, {
+	backgroundColor: red,
+	data: randomDataSet()
+}, {
+	backgroundColor: blue,
+	data: randomDataSet()
+}, {
+	backgroundColor: yellow,
+	data: randomDataSet()
+}, {
+	backgroundColor: green,
+	data: randomDataSet()
+}];
 
-
-export default function(ctx){
-	const randomize = function(){
+export default function(ctx) {
+	const randomize = function() {
 		const shuffledColours = shuffle(colours);
 		datasets.forEach((dataset, index) => {
 			dataset.data = randomDataSet();
 			dataset.backgroundColor = shuffledColours[index];
 		});
-	}
+	};
 
 	let tickOptions = {
 		min: -100,
@@ -92,7 +93,7 @@ export default function(ctx){
 					hoverRadius: 0
 				}
 			},
-			animation:{
+			animation: {
 				onComplete: () => {
 					if (timeout) {
 						clearTimeout(timeout);
@@ -116,5 +117,4 @@ export default function(ctx){
 			}
 		}
 	});
-
-};
+}

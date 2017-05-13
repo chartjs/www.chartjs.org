@@ -1,3 +1,5 @@
+'use strict';
+
 var gulp = require('gulp');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
@@ -14,71 +16,71 @@ var rename = require('gulp-rename');
 
 gulp.task('build-js', function() {
 	return browserify({entries: './src/index.js', debug: gutil.env.debug})
-		.transform(babel, {presets: ["es2015"]})
+		.transform(babel, {presets: ['es2015']})
 		.bundle()
 		.pipe(source('build.js'))
 		.pipe(buffer())
 		.pipe(uglify())
-		.pipe(gulp.dest('www'));
-
+		.pipe(gulp.dest('./www'));
 });
-gulp.task('watch-js', ['build-js'], function(){
+
+gulp.task('watch-js', ['build-js'], function() {
 	return gulp.watch(
 		'./src/*.js',
 		['build-js']
 	);
 });
 
-gulp.task('server', ['site'], function(){
+gulp.task('server', ['site'], function() {
 	connect.server({
 		root: 'www',
 		port: 8080
 	});
 });
 
-gulp.task('less', function () {
+gulp.task('less', function() {
 	return gulp.src('./src/styles.less')
 	.pipe(plumber({
-		errorHandler: function(err){
+		errorHandler: function(err) {
 			gutil.log(gutil.colors.red(err));
 			this.emit('end');
 		}
 	}))
 	.pipe(less())
 	.pipe(autoprefixer({
-		browsers: ["last 2 version"],
+		browsers: ['last 2 version'],
 		cascade: false
 	}))
 	.pipe(gulp.dest('./www'));
 });
 
-gulp.task('watch-less', ['less'], function(){
+gulp.task('watch-less', ['less'], function() {
 	return gulp.watch(
 		'./src/*.less',
 		['less']
 	);
 });
 
-gulp.task('watch-templates', ['template'], function(){
+gulp.task('watch-templates', ['template'], function() {
 	return gulp.watch(
 		'./src/**/*.html',
 		['template']
 	);
 });
 
-gulp.task('move-favicon', function(){
+gulp.task('move-favicon', function() {
 	return gulp.src('./src/favicon.ico')
 		.pipe(gulp.dest('./www'));
 });
 
-gulp.task('move-img', function(){
+gulp.task('move-img', function() {
 	return gulp.src('./src/img/*')
 		.pipe(gulp.dest('./www/img'));
 });
 
 gulp.task('template', ['docs-template', 'samples-template', 'home-template']);
 
-gulp.task('docs-template', function(cb){
+gulp.task('docs-template', function() {
 	return gulp.src('./src/templates/docs.html')
 		.pipe(nunjucks.compile())
 		.pipe(rename({basename: 'index'}))
@@ -98,7 +100,6 @@ gulp.task('home-template', function(){
 		.pipe(rename({basename: 'index'}))
 		.pipe(gulp.dest('./www'));
 });
-
 
 gulp.task('site', ['template', 'less', 'move-favicon', 'build-js', 'move-img']);
 
