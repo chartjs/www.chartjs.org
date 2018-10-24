@@ -1,6 +1,6 @@
 {
   "name": "www.chartjs.org",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Chart.js Website",
   "main": "index.js",
   "author": "Nick Downie <hello@nickdownie.com> (http://www.nickdownie.com/)",
