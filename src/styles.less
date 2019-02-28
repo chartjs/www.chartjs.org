@@ -22,8 +22,6 @@
 	box-sizing: border-box;
 }
 
-
-
 html {
 	font-size: 100%;
 	-webkit-font-smoothing: antialiased;
@@ -63,6 +61,7 @@ body {
 	height: 380px;
 	background-color: @grey;
 	overflow: hidden;
+
 	canvas {
 		display: block;
 		margin-top: 5px;
@@ -81,7 +80,6 @@ body {
 		padding-right: 20px;
 	}
 }
-
 
 .documentation-header, .documentation-body {
 	max-width: 1200px;
@@ -208,8 +206,9 @@ body {
 
 // Type styles
 .hero-title {
+	color: @red;
 	font-family: @title;
-	font-size: 3.75rem;
+	font-size: 3.5rem;
 	font-weight: 600;
 	margin: 0;
 }
@@ -308,7 +307,6 @@ a {
 	}
 }
 
-
 hr {
 	display: block;
 	max-width: 50%;
@@ -318,7 +316,6 @@ hr {
 	border-bottom: 1px solid @grey;
 }
 
-
 .table-wrapper {
 	margin: 40px 0;
 	width: 100%;
@@ -326,6 +323,7 @@ hr {
 	-webkit-overflow-scrolling: touch;
 	border: 1px solid @grey;
 }
+
 table {
 	min-width: 100%;
 	border-collapse: collapse;
@@ -368,13 +366,10 @@ ul {
 	}
 }
 
-
 // Hero banner styles
-.chart-logo {
-	margin: 1em 0;
-}
 .hero-button-wrapper {
 	padding: 20px 0;
+
 	.button {
 		width: 150px;
 		@media @mobile-query {
@@ -426,6 +421,7 @@ ul {
 	margin: 0 -10px;
 	.clearfix;
 }
+
 .feature-small {
 	float: left;
 	padding: 10px;
@@ -506,6 +502,7 @@ footer {
 .fade-in {
 	animation-name: fade-in;
 }
+
 .fade-in-up {
 	animation-name: fade-in-up;
 	transform-origin: right middle;

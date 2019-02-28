@@ -13,6 +13,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var plumber = require('gulp-plumber');
 var nunjucks = require('gulp-nunjucks');
 var rename = require('gulp-rename');
+var merge = require('merge-stream');
 
 gulp.task('build-js', function() {
 	return browserify({entries: './src/index.js', debug: gutil.env.debug})
@@ -68,14 +69,12 @@ gulp.task('watch-templates', ['template'], function() {
 	);
 });
 
-gulp.task('move-favicon', function() {
-	return gulp.src('./src/favicon.ico')
-		.pipe(gulp.dest('./www'));
-});
-
-gulp.task('move-img', function() {
-	return gulp.src('./src/img/*')
-		.pipe(gulp.dest('./www/img'));
+gulp.task('copy-assets', function() {
+	return merge(
+		gulp.src('./src/favicon.ico').pipe(gulp.dest('./www')),
+		gulp.src('./src/img/*').pipe(gulp.dest('./www/img')),
+		gulp.src('./media/*').pipe(gulp.dest('./www/media'))
+	);
 });
 
 gulp.task('template', ['docs-template', 'samples-template', 'home-template']);
@@ -101,6 +100,6 @@ gulp.task('home-template', function(){
 		.pipe(gulp.dest('./www'));
 });
 
-gulp.task('site', ['template', 'less', 'move-favicon', 'build-js', 'move-img']);
+gulp.task('site', ['template', 'less', 'build-js', 'copy-assets']);
 
 gulp.task('default', ['server', 'watch-js', 'watch-less', 'watch-templates']);
