@@ -41,18 +41,18 @@ gulp.task('server', ['site'], function() {
 
 gulp.task('less', function() {
 	return gulp.src('./src/styles.less')
-	.pipe(plumber({
-		errorHandler: function(err) {
-			gutil.log(gutil.colors.red(err));
-			this.emit('end');
-		}
-	}))
-	.pipe(less())
-	.pipe(autoprefixer({
-		browsers: ['last 2 version'],
-		cascade: false
-	}))
-	.pipe(gulp.dest('./www'));
+		.pipe(plumber({
+			errorHandler: function(err) {
+				gutil.log(gutil.colors.red(err));
+				this.emit('end');
+			}
+		}))
+		.pipe(less())
+		.pipe(autoprefixer({
+			browsers: ['last 2 version'],
+			cascade: false
+		}))
+		.pipe(gulp.dest('./www'));
 });
 
 gulp.task('watch-less', ['less'], function() {
@@ -86,14 +86,14 @@ gulp.task('docs-template', function() {
 		.pipe(gulp.dest('./www/docs'));
 });
 
-gulp.task('samples-template', function(cb){
+gulp.task('samples-template', function() {
 	return gulp.src('./src/templates/samples.html')
 		.pipe(nunjucks.compile())
 		.pipe(rename({basename: 'index'}))
 		.pipe(gulp.dest('./www/samples'));
 });
 
-gulp.task('home-template', function(){
+gulp.task('home-template', function() {
 	return gulp.src('./src/templates/homepage.html')
 		.pipe(nunjucks.compile())
 		.pipe(rename({basename: 'index'}))

@@ -36,7 +36,8 @@ export default function(ctx) {
 
 	const gridGrey = Chart.helpers.color(colours.grey).alpha(0.5).rgbaString();
 	const axisGrey = Chart.helpers.color(colours.grey).alpha(1).rgbaString();
-	new Chart.Bar(ctx, {
+	return new Chart(ctx, {
+		type: 'bar',
 		data: barChartData,
 		options: {
 			tooltips: {
