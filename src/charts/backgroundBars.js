@@ -14,31 +14,32 @@ export default function(ctx) {
 
 	var data = [];
 
-	var timeout;
+	var timeout, barChart;
 
-	for (var i = count - 1; i >= 0; i--) {
+	for (let i = count - 1; i >= 0; i--) {
 		data.push(randomize());
 	}
 
 	var barChartConfig = {
+		type: 'bar',
 		options: {
 			responsive: true,
 			maintainAspectRatio: false,
 			legend: {
 				display: false
 			},
-			scales:{
-				yAxes:[{
+			scales: {
+				yAxes: [{
 					display: false,
 					ticks: {
 						beginAtZero: true
 					}
 				}],
-				xAxes:[{
+				xAxes: [{
 					display: false
 				}]
 			},
-			animation:{
+			animation: {
 				onComplete: () => {
 					if (timeout) {
 						clearTimeout(timeout);
@@ -59,12 +60,12 @@ export default function(ctx) {
 		data: {
 			labels: new Array(count),
 			datasets: [{
-				backgroundColor: "rgba(0,0,0,0.05)",
-				hoverBackgroundColor: "rgba(0,0,0,0.1)",
+				backgroundColor: 'rgba(0,0,0,0.05)',
+				hoverBackgroundColor: 'rgba(0,0,0,0.1)',
 				data: data
 			}]
 		}
 	};
 
-	const barChart = new Chart.Bar(ctx, barChartConfig);
+	barChart = new Chart(ctx, barChartConfig);
 }

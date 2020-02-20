@@ -79,7 +79,8 @@ export default function(ctx) {
 
 	var timeout;
 
-	var bubbleChart = new Chart.Bubble(ctx, {
+	var bubbleChart = new Chart(ctx, {
+		type: 'bubble',
 		data: {
 			datasets: datasets
 		},

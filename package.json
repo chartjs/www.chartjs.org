@@ -24,7 +24,7 @@
     "vinyl-source-stream": "^1.1.0"
   },
   "dependencies": {
-    "chart.js": "https://github.com/chartjs/Chart.js.git#6ff34a5d4a29afea087f08568e01e2514e9d8b11",
+    "chart.js": "^2.8.0",
     "merge-stream": "^1.0.1",
     "normalize.css": "^3.0.3"
   }

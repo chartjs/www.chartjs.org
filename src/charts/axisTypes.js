@@ -2,7 +2,7 @@ import Chart from 'chart.js';
 
 import * as colours from '../colours.js';
 
-export default function(ctx){
+export default function(ctx) {
 	let red = Chart.helpers.color(colours.red);
 
 	var scatterChartData = {
@@ -12,6 +12,7 @@ export default function(ctx){
 			pointBorderColor: red.alpha(1).rgbaString(),
 			pointBackgroundColor: '#FFFFFF',
 			pointBorderWidth: 2,
+			showLine: true,
 			data: [{
 				x: 1,
 				y: -1.711e-2
@@ -49,7 +50,8 @@ export default function(ctx){
 		}]
 	};
 
-	new Chart.Scatter(ctx, {
+	return new Chart(ctx, {
+		type: 'scatter',
 		data: scatterChartData,
 		options: {
 			legend: {

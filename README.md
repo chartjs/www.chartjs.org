@@ -5,7 +5,8 @@ This repo builds the Chart.js docs as a static site, and the www.chartjs.org hom
 Tasks are managed via [gulp](http://gulpjs.com/).
 
 To run locally:
-```
+
+```bash
 npm install
 gulp
 ```
