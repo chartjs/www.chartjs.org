@@ -40,6 +40,11 @@ export default function(ctx) {
 		type: 'bar',
 		data: barChartData,
 		options: {
+			datasets: {
+				bar: {
+					barPercentage: 0.75,
+				}
+			},
 			tooltips: {
 				enabled: false
 			},
@@ -50,7 +55,6 @@ export default function(ctx) {
 			},
 			scales: {
 				xAxes: [{
-					barPercentage: 0.75,
 					gridLines: {
 						color: gridGrey,
 						zeroLineColor: axisGrey
