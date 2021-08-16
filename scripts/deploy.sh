@@ -4,7 +4,7 @@ set -e
 
 TARGET_DIR='gh-pages'
 TARGET_BRANCH='master'
-TARGET_REPO_URL="https://$GITHUB_TOKEN@github.com/chartjs/chartjs.github.io.git"
+TARGET_REPO_URL="https://$GH_AUTH_TOKEN@github.com/chartjs/chartjs.github.io.git"
 
 # Clone the repository and checkout the gh-pages branch
 git clone $TARGET_REPO_URL $TARGET_DIR
