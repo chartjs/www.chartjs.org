@@ -1,0 +1,18 @@
+extends:
+  - chartjs
+  - plugin:es/no-new-in-es2019
+  - plugin:markdown/recommended
+
+env:
+  es6: true
+  browser: true
+  node: true
+
+parserOptions:
+  ecmaVersion: 2018
+  sourceType: module
+  ecmaFeatures:
+    impliedStrict: true
+    modules: true
+
+plugins: ['es']
