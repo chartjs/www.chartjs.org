@@ -57,6 +57,7 @@ gulp.task('watch-less', gulp.series('less', function() {
 gulp.task('copy-assets', function() {
   return merge(
     gulp.src('_config.yml').pipe(gulp.dest('./www')),
+    gulp.src('robots.txt').pipe(gulp.dest('./www')),
     gulp.src('./src/favicon.ico').pipe(gulp.dest('./www')),
     gulp.src('./src/img/*').pipe(gulp.dest('./www/img')),
     gulp.src('./media/*').pipe(gulp.dest('./www/media'))
