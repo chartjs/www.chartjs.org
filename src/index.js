@@ -9,6 +9,7 @@ import v3perf from './charts/v3perf';
 import v31segments from './charts/v31segments';
 import v34subtitle from './charts/v34subtitle';
 import v35box from './charts/v35box';
+import v4colors from './charts/v4colors';
 
 (()=>{
   Chart.defaults.plugins.tooltip.enabled = false;
@@ -21,4 +22,5 @@ import v35box from './charts/v35box';
   v31segments('v31segments');
   v34subtitle('v34subtitle');
   v35box('v35box');
+  v4colors('v4colors');
 })();

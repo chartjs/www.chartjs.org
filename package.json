@@ -19,6 +19,7 @@
     "browserify": "^17.0.0",
     "eslint-config-chartjs": "^0.3.0",
     "eslint-plugin-es": "^4.1.0",
+    "eslint-plugin-markdown": "^3.0.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-connect": "^5.7.0",
