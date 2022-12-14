@@ -33,7 +33,7 @@
     "vinyl-source-stream": "^2.0.0"
   },
   "dependencies": {
-    "chart.js": "^3.5.0",
+    "chart.js": "^4.0.0",
     "merge-stream": "^2.0.0",
     "normalize.css": "^8.0.1"
   }

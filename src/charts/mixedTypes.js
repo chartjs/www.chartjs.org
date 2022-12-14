@@ -1,4 +1,5 @@
 import Chart from 'chart.js/auto';
+import * as helpers from 'chart.js/helpers';
 import * as colours from '../colours.js';
 
 const randomScalingFactor = function() {
@@ -23,11 +24,11 @@ export default function(ctx) {
       borderWidth: 2
     }, {
       type: 'line',
-      backgroundColor: Chart.helpers.color(colours.yellow).alpha(0.5).rgbString(),
+      backgroundColor: helpers.color(colours.yellow).alpha(0.5).rgbString(),
       data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()],
-      borderColor: Chart.helpers.color(colours.yellow).alpha(1).rgbString(),
+      borderColor: helpers.color(colours.yellow).alpha(1).rgbString(),
       borderWidth: 1,
-      pointBorderColor: Chart.helpers.color(colours.yellow).alpha(1).rgbString(),
+      pointBorderColor: helpers.color(colours.yellow).alpha(1).rgbString(),
       pointBorderWidth: 2,
       pointBackgroundColor: 'white',
       fill: true
@@ -35,8 +36,8 @@ export default function(ctx) {
   };
 
 
-  const gridGrey = Chart.helpers.color(colours.grey).alpha(0.5).rgbString();
-  const axisGrey = Chart.helpers.color(colours.grey).alpha(1).rgbString();
+  const gridGrey = helpers.color(colours.grey).alpha(0.5).rgbString();
+  const axisGrey = helpers.color(colours.grey).alpha(1).rgbString();
   return new Chart(ctx, {
     type: 'bar',
     data: barChartData,
