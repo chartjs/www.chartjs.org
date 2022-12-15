@@ -19,6 +19,7 @@
     "browserify": "^17.0.0",
     "eslint-config-chartjs": "^0.3.0",
     "eslint-plugin-es": "^4.1.0",
+    "eslint-plugin-markdown": "^3.0.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-connect": "^5.7.0",
@@ -33,7 +34,7 @@
     "vinyl-source-stream": "^2.0.0"
   },
   "dependencies": {
-    "chart.js": "^3.5.0",
+    "chart.js": "^4.0.0",
     "merge-stream": "^2.0.0",
     "normalize.css": "^8.0.1"
   }

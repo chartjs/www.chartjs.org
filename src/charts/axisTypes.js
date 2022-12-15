@@ -1,9 +1,10 @@
 import Chart from 'chart.js/auto';
+import * as helpers from 'chart.js/helpers';
 
 import * as colours from '../colours.js';
 
 export default function(ctx) {
-  let red = Chart.helpers.color(colours.red);
+  let red = helpers.color(colours.red);
 
   var scatterChartData = {
     datasets: [{
@@ -74,7 +75,7 @@ export default function(ctx) {
           ticks: {
             autoSkip: false,
             callback: function(tick) {
-              var remain = tick / (Math.pow(10, Math.floor(Chart.helpers.log10(tick))));
+              var remain = tick / (Math.pow(10, Math.floor(helpers.log10(tick))));
               if (remain === 1 || remain === 2 || remain === 5) {
                 return tick.toString();
               }

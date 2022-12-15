@@ -17,7 +17,11 @@ var merge = require('merge-stream');
 
 gulp.task('build-js', function() {
   return browserify({entries: './src/index.js', debug: gutil.env.debug})
-    .transform(babel, {presets: ['@babel/preset-env']})
+    .transform(babel, {
+      presets: ['@babel/preset-env'],
+      global: true,
+      ignore: [/\/node_modules\/(?!chart\.js\/)/]
+    })
     .bundle()
     .pipe(source('build.js'))
     .pipe(buffer())
